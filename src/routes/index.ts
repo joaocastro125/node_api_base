@@ -1,23 +1,18 @@
-import {  Router } from "express";
-import * as phrasesController from '../controller/phrasesController';
+import { Router } from "express";
+import * as todoController from '../controller/totoController'
+import { sequelize } from '../instance/postgres'
+import { Todo } from '../models/Todo';
 
 
-const router=Router();
+const router = Router();
 
-router.get("/ping",phrasesController.Home);
-router.get("/randow",phrasesController.Randow);
-router.get("/name/:name",phrasesController.Name);  
-
-// router.post("/user",phrasesController.User);
-
-router.post('/frases',phrasesController.createPhrases);
-router.get('/frases',phrasesController.allPhrases);
-router.get('/frases/aleatorio',phrasesController.aleatorioPhrases);
-router.get('/frases/:id',phrasesController.onePhrases);
-router.put('/frases/:id',phrasesController.updatePhrases);
-router.delete('/frases/:id',phrasesController.deletePhrases);
+router.get("/todo", todoController.All);
+router.post("/todo", todoController.Add);
+router.put("/todo/:id", todoController.Update);
+router.delete("/todo/:id", todoController.Delete);
 
 
 
-   
+
+
 export default router;
